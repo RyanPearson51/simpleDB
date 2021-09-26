@@ -12,7 +12,7 @@ let pool = mysql.createPool({
 
 function listUsers(req, res){
     console.log('controller.users.list', req.params)
-    //select all users from Worker 
+    //select all users from appusers 
     pool.query('SELECT username, email FROM appusers', function(err, rows){
         if(err){
             return res.json({
@@ -27,7 +27,7 @@ function listUsers(req, res){
 
 let showUser = function(req, res){
     console.log('controller.users.show', req.params)
-    //code to return single user by id
+    //code to return single user by id, will not include password
     //id is path param
     let sql = "SELECT id, fullname, username, email FROM appusers WHERE id = ?";
     //const replacements = []
